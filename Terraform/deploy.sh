@@ -2,19 +2,13 @@
 
 set -e  # Exit on error
 
-# Define variables
-TF_VAR_FILE="variables.tf"
-
 echo "🔹 Initializing Terraform..."
 terraform init
 
-echo "🔹 Validating Terraform configuration..."
-terraform validate
-
 echo "🔹 Creating Terraform plan..."
-terraform plan -var-file=$TF_VAR_FILE -out=tfplan
+terraform plan
 
 echo "🔹 Applying Terraform configuration..."
-terraform apply tfplan
+terraform apply
 
 echo "✅ Deployment complete!"
