@@ -10,7 +10,7 @@ variable "region" {
 
 variable "location" {
   description = "GCS Bucket and BQ Location"
-  default     = "US"
+  default     = "us-west1"
 }
 
 variable "gcs_bucket_name" {

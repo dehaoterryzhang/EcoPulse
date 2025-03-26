@@ -176,3 +176,6 @@ cython_debug/
 Terraform/.terraform/
 Terraform/*.tfstate
 Terraform/*.tfstate.backup
+
+*.env_encoded
+
