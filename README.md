@@ -8,14 +8,14 @@
 
 In today's fast-paced world, monitoring and analyzing key economic indicators—such as stock market, inflation, housing prices, and so on— is critical for making informed decisions in finance, policymaking, and business. However, gathering this data can often be a tedious and time-consuming task, especially when relying on manually pulling information from various sources.
 
-**EcoPulse** automates this workflow by:
+To address this problem, **EcoPulse** automates the workflow by:
 1. Extracting economic data from the **Federal Reserve Economic Data (FRED) Python API**.
 
-2. Storing raw data in GCS as a data lake.
+2. Storing raw data in **GCS as a data lake**.
 
 3. Processing data with **Apache Spark** on Dataproc.
 
-4. Storing structured, partitioned, and clustered data in BigQuery for analytics.
+4. Storing structured, partitioned, and clustered data in **BigQuery** for analytics.
 
 5. Visualizing insights through an interactive dashboard in **Looker Studio**.
 
@@ -99,6 +99,8 @@ The [data_load_gcs.yaml](Kestra/data_load_gcs.yaml) flow orchestrates the entire
 - Uploads the CSVs to the specified GCS bucket.
 - Purges temporary files to keep the workflow clean.
 
+🔑 Note that the service account creds is configured using a [secret](https://kestra.io/docs/how-to-guides/google-credentials) and the FRED API Key was set through the KV Store.
+
 Kestra Topology Diagram:
 <p align="center"> <img src="images/Kestra Flow Diagram.png" height="300" />
 </p>
@@ -107,7 +109,7 @@ Kestra Topology Diagram:
 EcoPulse leverages **Apache Spark** for scalable and efficient data transformations. Spark processes economic data stored in GCS bucket, transforms it, and then loads the transformed data into BigQuery for downstream analysis.
 
 ### 🛠️ Prerequisites
-Depending on whether you want to use local vs cloud setup, ensure you have the following installed:
+Depending on the Spark environment (local vs cloud), ensure you have the following installed:
 
 #### Running Locally:
 - Python 3.12 (or your preferred version)
@@ -201,7 +203,7 @@ Before building the dashboard, ensure you have:
 - Daily Trending of Financial Market Signals
 - Distribution of SP500 Daily Change Category
 - Monthly Trending of Inflation and Housing Signals
-- Table of Labor Market and Economic Acticity Signals
+- Table of Labor Market and Economic Activity Signals
 
 Link to the Looker Studio Dashboard [here](https://lookerstudio.google.com/u/1/reporting/6fd3eacb-9f92-43a9-93e3-7f0de59e56ea/page/WBrEF).
 
@@ -214,7 +216,7 @@ Link to the Looker Studio Dashboard [here](https://lookerstudio.google.com/u/1/r
 - Automate Spark job execution via Kestra
 - Implement scheduled workflows for daily updates
 - Expand dashboard visualizations with predictive analytics
-- Replicate the architecture using Azure and AWS.
+- Replicate the architecture on Azure and AWS
 
 ## 🎉 Acknowledgments
 **EcoPulse** is built using:
